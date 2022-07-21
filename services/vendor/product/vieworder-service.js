@@ -19,8 +19,8 @@ export async function vieworder1(input) {
         {
           $lookup: {
             from: "buy-product",
-            localField: "Mongoose.Types.ObjectId(_id)",
-            foreignField: "Mongoose.Types.ObjectId(productId)",
+            localField: "_id",
+            foreignField: "productId",
             as: "buyproductData",
           },
         },
@@ -30,8 +30,8 @@ export async function vieworder1(input) {
         {
           $lookup: {
             from: "user",
-            localField: "Mongoose.Types.ObjectId(buyproductData.userId)",
-            foreignField: "Mongoose.Types.ObjectId(_id)",
+            localField: "buyproductData.userId",
+            foreignField: "_id",
             as: "UserData",
           },
         },
@@ -48,6 +48,7 @@ export async function vieworder1(input) {
             "buyproductData.brand": 1,
             "buyproductData.username": "$UserData.name",
             "buyproductData.userId": 1,
+            // "UserData":0,
             _id: 0,
           },
         },
@@ -60,7 +61,7 @@ export async function vieworder1(input) {
       }
     } catch (e) {
       // console.log(e.code);
-      reject("Something is worng1234" + e);
+      reject("Something is worng" + e);
     }
   });
 }
