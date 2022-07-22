@@ -42,9 +42,11 @@ export function user_token_header(req, res, next) {
                 res.status(403).json({ success: false, message: "unauthorized token"+err });
             } else {
                 req.userId = payload.userId;
-                console.log(req.userId);
+                // console.log(req.userId);
                 next();
             }
         });
     }
 }
+
+

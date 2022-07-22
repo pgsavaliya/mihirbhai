@@ -10,6 +10,7 @@ import {
 } from "../../middleware/user/checkToken.js";
 import { ViewProductUser } from "../../controller/user/product/viewproduct-controller.js";
 import { buyProduct } from "../../controller/user/product/buy-product-controller.js";
+import { productCommment1 } from "../../controller/user/product/product-Comment-controller.js";
 
 const userapp = express();
 userapp.use(express.json());
@@ -24,5 +25,6 @@ userapp.post("/sign-in", userloginvalidation, userlogin);
 userapp.get("/Product", ViewProductUser);
 userapp.get("/buyproduct", user_token_url, buyProduct);
 userapp.get("/viewOrder", user_token_url, ViewProductUser);
+userapp.post("/commentProduct",user_token_header,productCommment1);
 
 export default userapp;

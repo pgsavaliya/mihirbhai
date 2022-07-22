@@ -2,6 +2,7 @@ import  express  from "express";
 import { vendorlogin } from "../../controller/vendor/auth/sign-in-controller.js";
 import { vendorRegister } from "../../controller/vendor/auth/sign-up-controller.js";
 import { AddProduct } from "../../controller/vendor/product/addproduct-controller.js";
+import { viewComment } from "../../controller/vendor/product/viewComment-controller.js";
 import { ViewOrderVendor1 } from "../../controller/vendor/product/vieworder-controller.js";
 import { ViewProductVendor } from "../../controller/vendor/product/viewproduct-controller.js";
 import  {addproduct_token,vendorIdUrl_token}  from "../../middleware/vendor/checkToken.js";
@@ -21,5 +22,6 @@ vendorRoute.post("/sign-in",vendorlogin);
 vendorRoute.post("/Product",addproduct_token,AddProduct);
 vendorRoute.get("/Product",vendorIdUrl_token,ViewProductVendor);
 vendorRoute.get("/viewOrders",vendorIdUrl_token,ViewOrderVendor1);
+vendorRoute.get("/veiwComment",vendorIdUrl_token,viewComment);
 
 export default vendorRoute;
